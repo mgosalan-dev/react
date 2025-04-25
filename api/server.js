@@ -8,7 +8,9 @@ const users = []
 
 app.post('/usuarios', (req, res) => {
   users.push(req.body)
-  res.send('Cadastrado com sucesso')
+
+  res.status(201).json("Usuario Criado")
+  
 })
 
 app.get('/usuarios', (req, res) => {

@@ -1,0 +1,40 @@
+# Dependências - isso é CRUCIAL
+**/node_modules
+**/node_modules/**
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Prisma - aqui tá a mágica pra resolver seu problema
+**/.prisma
+**/prisma/generated/
+**/prisma/client/
+**/prisma/migrations/
+
+# Build stuff
+**/dist
+**/build
+**/.next
+**/.nuxt
+**/out
+
+# Ambiente
+**/.env
+**/.env.*
+!**/.env.example
+
+# Arquivos do sistema
+.DS_Store
+**/.DS_Store
+Thumbs.db
+**/Thumbs.db
+
+# Binários e scripts gerados pelo Windows
+**/*.exe
+**/*.cmd
+**/*.ps1
+
+# IDEs e editores
+**/.idea
+**/.vscode
