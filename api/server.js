@@ -4,37 +4,35 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 const app = express()
 
-// Middleware padrão
+// Middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// Middleware de debug de requisições
+// Middleware de log para debug
 app.use((req, res, next) => {
   if (['POST', 'PUT'].includes(req.method)) {
     console.log(`\n=== ${req.method} ${req.url} ===`)
-    console.log('Content-Type:', req.headers['content-type'])
-    console.log('Body recebido:', req.body)
+    console.log('Headers:', req.headers)
+    console.log('Body:', req.body)
   }
   next()
 })
 
-// Função para tratar erros de servidor
+// Função de tratamento de erros
 function handleServerError(res, error, contexto = '') {
   console.error(`Erro ${contexto}:`, error)
   res.status(500).json({
     error: 'Erro interno do servidor',
-    mensagem: error.message || 'Erro desconhecido'
+    detalhe: error.message || 'Erro desconhecido'
   })
 }
 
-// Rota para criar usuário
+// Rota: Criar usuário
 app.post('/usuarios', async (req, res) => {
   const { email, name, age } = req.body
 
   if (!email || !name || age === undefined) {
-    return res.status(400).json({
-      error: 'Campos obrigatórios: name, email, age'
-    })
+    return res.status(400).json({ error: 'Campos obrigatórios: name, email e age' })
   }
 
   try {
@@ -55,67 +53,76 @@ app.post('/usuarios', async (req, res) => {
   }
 })
 
-// Rota para listar usuários
+// Rota: Listar usuários (com filtros opcionais)
 app.get('/usuarios', async (req, res) => {
   try {
-    const usuarios = await prisma.user.findMany()
-    res.status(200).json(usuarios)
+    const { email, name, age } = req.query
+
+    const filters = {}
+    if (email) filters.email = String(email)
+    if (name) filters.name = String(name)
+    if (age) filters.age = Number(age)
+
+    const usuarios = await prisma.user.findMany({ where: filters })
+
+    res.status(200).json({
+      message: Object.keys(filters).length ? 'Usuário(s) filtrado(s)' : 'Todos os usuários',
+      usuario: usuarios
+    })
   } catch (error) {
     handleServerError(res, error, 'ao buscar usuários')
   }
 })
 
-// Rota para editar usuário
+// Rota: Editar usuário
 app.put('/usuarios/:id', async (req, res) => {
   const { email, name, age } = req.body
+  const { id } = req.params
 
-  // Monta dinamicamente os dados a serem atualizados
   const dataToUpdate = {}
-  if (email !== undefined) dataToUpdate.email = email
-  if (name !== undefined) dataToUpdate.name = name
+  if (email) dataToUpdate.email = email
+  if (name) dataToUpdate.name = name
   if (age !== undefined) dataToUpdate.age = Number(age)
 
   if (Object.keys(dataToUpdate).length === 0) {
-    return res.status(400).json({
-      error: 'Nenhum dado enviado para atualização'
-    })
+    return res.status(400).json({ error: 'Nenhum dado enviado para atualização' })
   }
 
   try {
-    const update = await prisma.user.update({
-      where: { id: req.params.id },
+    const usuarioAtualizado = await prisma.user.update({
+      where: { id },
       data: dataToUpdate
     })
 
     res.status(200).json({
-      message: 'Usuário editado com sucesso',
-      usuario: update
+      message: 'Usuário atualizado com sucesso',
+      usuario: usuarioAtualizado
     })
   } catch (error) {
     handleServerError(res, error, 'ao editar usuário')
   }
 })
 
-// rota para deletar um usuario
+// Rota: Deletar usuário
 app.delete('/usuarios/:id', async (req, res) => {
+  const { id } = req.params
+
   try {
-    const deletedUser = await prisma.user.delete({
-      where: { id: req.params.id }
+    const usuarioDeletado = await prisma.user.delete({
+      where: { id }
     })
 
-    res.status(202).json({
+    res.status(200).json({
       message: 'Usuário deletado com sucesso',
-      usuario: deletedUser
+      usuario: usuarioDeletado
     })
   } catch (error) {
-    res.status(502)
-    handleServerError(res, error, 'ao deletar o usuário')
+    handleServerError(res, error, 'ao deletar usuário')
   }
 })
 
-
-// Inicialização do servidor
+// Start do servidor
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`)
+  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`)
 })
