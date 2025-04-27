@@ -1,12 +1,16 @@
 import express from 'express'
+import cors from 'cors'
 import { PrismaClient } from '@prisma/client'
 
+
 const prisma = new PrismaClient()
-const app = express()
+const app = express();
+
 
 // Middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
 // Middleware de log para debug
 app.use((req, res, next) => {
@@ -28,21 +32,25 @@ function handleServerError(res, error, contexto = '') {
 }
 
 // Rota: Criar usuário
-app.post('/usuarios', async (req, res) => {
-  const { email, name, age } = req.body
+app.post('/cadastro', async (req, res) => {
+  const { username, email, password} = req.body
 
-  if (!email || !name || age === undefined) {
-    return res.status(400).json({ error: 'Campos obrigatórios: name, email e age' })
+  if (!username || !email || !password === undefined) {
+    return res.status(400).json({ error: 'Campos obrigatórios: username, email e password' })
   }
 
   try {
     const novoUsuario = await prisma.user.create({
       data: {
+        username,
         email,
-        name,
-        age: Number(age)
+        password
+        
       }
     })
+
+    // Remove a senha do retorno
+    const { password: _, ...usuarioSemSenha } = novoUsuario;
 
     res.status(201).json({
       message: 'Usuário cadastrado com sucesso',
@@ -54,35 +62,43 @@ app.post('/usuarios', async (req, res) => {
 })
 
 // Rota: Listar usuários (com filtros opcionais)
-app.get('/usuarios', async (req, res) => {
+app.get('/cadastro', async (req, res) => {
+
   try {
-    const { email, name, age } = req.query
+    const { username, email } = req.query
 
     const filters = {}
+    if (username) filters.username = String(username)
     if (email) filters.email = String(email)
-    if (name) filters.name = String(name)
-    if (age) filters.age = Number(age)
+    
 
     const usuarios = await prisma.user.findMany({ where: filters })
 
+    // Remove senha de todos os usuários antes de retornar
+    const usuariosSemSenha = usuarios.map(user => {
+      const { password, ...rest } = user;
+      return rest;
+    });
+
     res.status(200).json({
       message: Object.keys(filters).length ? 'Usuário(s) filtrado(s)' : 'Todos os usuários',
-      usuario: usuarios
+      usuario: usuariosSemSenha
     })
   } catch (error) {
     handleServerError(res, error, 'ao buscar usuários')
   }
+
 })
 
 // Rota: Editar usuário
-app.put('/usuarios/:id', async (req, res) => {
-  const { email, name, age } = req.body
+app.put('/cadastro/:id', async (req, res) => {
+  const { username, email } = req.body
   const { id } = req.params
 
   const dataToUpdate = {}
+  if (username) dataToUpdate.username = username
   if (email) dataToUpdate.email = email
-  if (name) dataToUpdate.name = name
-  if (age !== undefined) dataToUpdate.age = Number(age)
+  
 
   if (Object.keys(dataToUpdate).length === 0) {
     return res.status(400).json({ error: 'Nenhum dado enviado para atualização' })
@@ -104,22 +120,38 @@ app.put('/usuarios/:id', async (req, res) => {
 })
 
 // Rota: Deletar usuário
-app.delete('/usuarios/:id', async (req, res) => {
-  const { id } = req.params
+app.delete('/cadastro', async (req, res) => {
+  let { ids } = req.body;
+
+  if (!ids || (Array.isArray(ids) && ids.length === 0)) {
+    return res.status(400).json({ error: "Envie pelo menos um ID para deletar." });
+  }
 
   try {
-    const usuarioDeletado = await prisma.user.delete({
-      where: { id }
-    })
+    if (!Array.isArray(ids)) {
+      // Se for um único ID, transforma em array pra facilitar
+      ids = [ids];
+    }
+
+    const usuariosDeletados = await prisma.user.deleteMany({
+      where: {
+        id: { in: ids }
+      }
+    });
 
     res.status(200).json({
-      message: 'Usuário deletado com sucesso',
-      usuario: usuarioDeletado
-    })
+      message: `Deletado(s) ${usuariosDeletados.count} usuário(s) com sucesso!`
+    });
   } catch (error) {
-    handleServerError(res, error, 'ao deletar usuário')
+    console.error(error);
+    res.status(500).json({
+      error: "Erro interno do servidor",
+      detalhe: error.message
+    });
   }
-})
+});
+
+
 
 // Start do servidor
 const PORT = process.env.PORT || 3000
