@@ -1,0 +1,184 @@
+/* Estilo para card de usuário no tema medieval isekai */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+
+.user_container {
+  max-width: 600px;
+  margin: 2rem auto;
+  position: relative;
+  background: linear-gradient(to bottom, #f8edd1, #eadfc0, #e5d7b8);
+  border: 3px solid #5d4022;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  font-family: 'Cinzel', serif;
+  color: #3c2812;
+  text-align: center;
+  background-image: 
+    repeating-linear-gradient(to right, transparent, transparent 2px, rgba(139, 110, 74, 0.1) 2px, rgba(139, 110, 74, 0.1) 4px),
+    repeating-linear-gradient(to bottom, transparent, transparent 2px, rgba(139, 110, 74, 0.1) 2px, rgba(139, 110, 74, 0.1) 4px),
+    linear-gradient(to bottom, #f8edd1, #eadfc0, #e5d7b8);
+}
+
+.banner {
+  background: linear-gradient(45deg, #412c16, #634c2c);
+  color: #ffebc1;
+  border: 2px solid #a88c5a;
+  font-family: 'MedievalSharp', 'Cinzel', serif;
+  padding: 0.6rem 1.5rem;
+  margin: 0 auto 1.5rem;
+  border-radius: 0.4rem 1.5rem 0.4rem 1.5rem;
+  width: fit-content;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px rgba(180, 140, 60, 0.3);
+  position: relative;
+  z-index: 2;
+  letter-spacing: 1px;
+  transform: rotate(-1deg);
+}
+
+.banner::before {
+  content: "★";
+  margin-right: 8px;
+  color: #ffd54f;
+}
+
+.banner::after {
+  content: "★";
+  margin-left: 8px;
+  color: #ffd54f;
+}
+
+.user_avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #a88c5a;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  margin: 0 auto 1rem;
+}
+
+.user_name {
+  font-size: 1.8rem;
+  color: #3c2812;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-shadow: 0 0 2px rgba(139, 110, 74, 0.3);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #5d4022;
+  font-style: italic;
+}
+
+.stats_container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px dashed #a88c5a;
+  border-radius: 0.5rem;
+}
+
+.stat_box {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  background: rgba(168, 140, 90, 0.1);
+  border-radius: 0.5rem;
+  min-width: 100px;
+}
+
+.stat_label {
+  font-weight: 700;
+  color: #5d4022;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.stat_value {
+  font-size: 1.4rem;
+  color: #3c2812;
+  font-weight: 700;
+}
+
+.repo_link {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(135deg, #634c2c, #412c16);
+  color: #ffebc1;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  border: 2px solid #a88c5a;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.repo_link:hover {
+  background: linear-gradient(135deg, #7a613a, #523920);
+  box-shadow: 0 0 15px rgba(255, 213, 79, 0.5);
+  transform: translateY(-2px);
+}
+
+.back_button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #7a613a, #523920);
+  color: #ffebc1;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  border: 2px solid #a88c5a;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.back_button:hover {
+  background: linear-gradient(135deg, #634c2c, #412c16);
+  box-shadow: 0 0 15px rgba(255, 213, 79, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Bordas do tipo pergaminho */
+.pergaminho {
+  position: relative;
+}
+
+.pergaminho:before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, transparent 50%, #d6c6a8 50%);
+  border-radius: 0 0 0 10px;
+  box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transform: rotate(-90deg);
+}
+
+.pergaminho:after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, transparent 50%, #d6c6a8 50%);
+  border-radius: 0 0 0 10px;
+  box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transform: rotate(90deg);
+}

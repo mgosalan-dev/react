@@ -1,0 +1,37 @@
+/* Estilo para o cabeçalho da aplicação */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f0e4 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f5f0e4"/><path d="M0 50 L50 0 L100 50 L50 100 Z" fill="none" stroke="%23e8dcbe" stroke-width="1"/></svg>') repeat;
+  min-height: 100vh;
+  font-family: 'Cinzel', serif;
+  color: #3c2812;
+  overflow-y: auto;
+}
+
+.app {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(to right, transparent, rgba(168, 140, 90, 0.15), transparent);
+}
+
+.app h1 {
+  margin: 0;
+  font-family: 'MedievalSharp', 'Cinzel', serif;
+  font-size: 2rem;
+  color: #3c2812;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: inline-block;
+}
+
+.app h1::before,
+.app h1::after {
+  content: "❧";
+  font-size: 1.5rem;
+  color: #a88c5a;
+  margin: 0 1rem;
+  vertical-align: middle;
+}

@@ -1,0 +1,62 @@
+/* Estilo para o container de Home */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap');
+
+.home_container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.loading {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  font-family: 'MedievalSharp', serif;
+  font-size: 1.2rem;
+  color: #5d4022;
+  padding: 2rem;
+  background: rgba(255, 250, 240, 0.6);
+  border: 2px dashed #a88c5a;
+  border-radius: 0.5rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.error {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  padding: 2rem;
+  background: rgba(220, 53, 53, 0.1);
+  border: 2px solid rgba(220, 53, 53, 0.3);
+  border-radius: 0.5rem;
+  color: #9b2c2c;
+}
+
+.try_again {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #7a613a, #523920);
+  color: #ffebc1;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: 2px solid #a88c5a;
+  transition: all 0.3s ease;
+}
+
+.try_again:hover {
+  background: linear-gradient(135deg, #634c2c, #412c16);
+  box-shadow: 0 0 15px rgba(255, 213, 79, 0.5);
+  transform: translateY(-2px);
+}
