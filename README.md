@@ -1,54 +1,102 @@
-# React + TypeScript + Vite
+# 🗺️ Search-GitHub - A Busca dos Aventureiros
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+  <img src="./public/vite.svg" alt="Logo do Projeto" width="100" height="100" />
+  <h3>⚔️ Conheça os melhores repositórios e revele os segredos dos códigos ancestrais ⚔️</h3>
+</div>
 
-Currently, two official plugins are available:
+## 📜 Sobre a Missão
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Search-GitHub é uma aplicação web que transforma a busca de perfis no GitHub em uma verdadeira aventura medieval! Embarque nessa jornada para encontrar os melhores aventureiros (desenvolvedores) e seus pergaminhos mágicos (repositórios) através de uma interface inspirada nos jogos de RPG e universos Isekai.
 
-## Expanding the ESLint configuration
+## 🧙‍♂️ Tecnologias Arcanas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Esta missão foi desenvolvida com as seguintes magias:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- [Vite](https://vitejs.dev/) - Grimório de invocação rápida
+- [React](https://reactjs.org/) - Magia de construção de interfaces
+- [GitHub API](https://docs.github.com/en/rest) - Portal para o reino dos desenvolvedores
+- [Styled Components](https://styled-components.com/) - Encantamentos de estilização
+- [React Router](https://reactrouter.com/) - Portais de navegação entre reinos
+
+## 🏰 Pré-requisitos para a Jornada
+
+Antes de iniciar a aventura, verifique se você possui:
+
+- Node.js instalado (recomendado v16+)
+- NPM ou Yarn instalado
+- Uma conexão com o reino da internet
+
+## 🧭 Instruções de Invocação
+
+```bash
+# Clone o pergaminho mágico
+git clone https://github.com/mgosalan-dev/search-github.git
+
+# Entre no castelo do projeto
+cd search-github
+
+# Invoque as dependências mágicas
+npm install
+# ou
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚔️ Iniciando a Aventura
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Modo de exploração
+npm run dev
+# ou
+yarn dev
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+# Construindo o reino para produção
+npm run build
+# ou
+yarn build
 ```
+
+## 🛡️ Funcionalidades da Missão
+
+- [x] Busca de aventureiros por nome de usuário
+- [x] Visualização do perfil do aventureiro
+- [x] Exploração dos repositórios mágicos
+- [x] Interface temática de RPG medieval
+- [ ] Sistema de conquistas para repositórios populares
+- [ ] Missões e desafios para os usuários
+
+## 📸 Paisagens do Reino
+
+<div align="center">
+  
+  <img src="/public/img/Captura de ecrã 2025-05-01 163950.png" alt="Perfil de aventureiro" width="400" />
+
+  <img src="/public/img/Captura de ecrã 2025-05-01 164043.png" alt="Tela de busca" width="400" />
+
+</div>
+
+## 🤝 Aliança de Colaboradores
+
+Quer se juntar à guilda de desenvolvimento? Siga estes passos:
+
+1. Faça um Fork do castelo
+2. Crie uma branch para sua magia (`git checkout -b feature/nova-magia`)
+3. Faça commit das suas alterações (`git commit -m 'feat: adiciona nova magia de busca'`)
+4. Envie para a branch (`git push origin feature/nova-magia`)
+5. Abra um Pull Request e aguarde a análise do Mestre da Guilda
+
+## 📝 Pergaminho de Licença
+
+Este projeto está protegido sob a licença [MIT](LICENSE.md).
+
+## 📫 Comunicação via Cristal Mágico
+
+MGOSALAN-DEV - [seu-email@exemplo.com](mailto:mgosalan.dev@gmail.com)
+
+GitHub: [mgosalan-dev](https://github.com/mgosalan-dev)
+
+---
+
+<div align="center">
+  Forjado com 🔮 por MGOSALAN-DEV
+</div>
