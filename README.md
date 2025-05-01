@@ -1,7 +1,6 @@
 # 🗺️ Search-GitHub - A Busca dos Aventureiros
 
 <div align="center">
-  <img src="./public/vite.svg" alt="Logo do Projeto" width="100" height="100" />
   <h3>⚔️ Conheça os melhores repositórios e revele os segredos dos códigos ancestrais ⚔️</h3>
 </div>
 
@@ -14,11 +13,7 @@ Search-GitHub é uma aplicação web que transforma a busca de perfis no GitHub 
 Esta missão foi desenvolvida com as seguintes magias:
 
 - [Vite](https://vitejs.dev/) - Grimório de invocação rápida
-<<<<<<< HEAD
-- [React](https://reactjs.org/) - Magia de construção de interfaces
-=======
 - [TypeScript](https://www.typescriptlang.org//) - Magia de construção de interfaces
->>>>>>> 73cfadb4ac85ed8c5444d8ae64c1bea619e54877
 - [GitHub API](https://docs.github.com/en/rest) - Portal para o reino dos desenvolvedores
 - [Styled Components](https://styled-components.com/) - Encantamentos de estilização
 - [React Router](https://reactrouter.com/) - Portais de navegação entre reinos
