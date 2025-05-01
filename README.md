@@ -67,17 +67,12 @@ yarn build
 ## 📸 Paisagens do Reino
 
 <div align="center">
-<<<<<<< HEAD
+
   
   <img src="/public/img/Captura de ecrã 2025-05-01 163950.png" alt="Perfil de aventureiro" width="400" />
 
   <img src="/public/img/Captura de ecrã 2025-05-01 164043.png" alt="Tela de busca" width="400" />
 
-=======
-  <img src="caminho/para/screenshot1.png" alt="Tela de busca" width="400" />
-  <img src="caminho/para/screenshot2.png" alt="Perfil de aventureiro" width="400" />
->>>>>>> 73cfadb4ac85ed8c5444d8ae64c1bea619e54877
-</div>
 
 ## 🤝 Aliança de Colaboradores
 
@@ -95,20 +90,13 @@ Este projeto está protegido sob a licença [MIT](LICENSE.md).
 
 ## 📫 Comunicação via Cristal Mágico
 
-<<<<<<< HEAD
-MGOSALAN-DEV - [seu-email@exemplo.com](mailto:mgosalan.dev@gmail.com)
+MGOSALAN-DEV - [mgosalan.dev@gmail.com
+](mailto:mgosalan.dev@gmail.com)
 =======
-MGOSALAN-DEV - [seu-email@exemplo.com](mgosalan.dev@gmail.com)
->>>>>>> 73cfadb4ac85ed8c5444d8ae64c1bea619e54877
 
-GitHub: [mgosalan-dev](https://github.com/mgosalan-dev)
-
----
 
 <div align="center">
   Forjado com 🔮 por MGOSALAN-DEV
-<<<<<<< HEAD
+
 </div>
-=======
-</div>
->>>>>>> 73cfadb4ac85ed8c5444d8ae64c1bea619e54877
+
